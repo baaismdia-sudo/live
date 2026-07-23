@@ -1,0 +1,115 @@
+/*
+ * TournamentLive Global Design System
+ * ONE canonical token set for every SaaS-platform surface (landing, auth,
+ * every dashboard, settings, CMS, everything except organizer-customized
+ * public tournament sites, which use their own per-tournament theme tokens
+ * from website_themes — that separation is intentional and must stay).
+ *
+ * Legacy aliases (--color-brand, --color-surface-alt, --color-text-muted,
+ * --color-danger) are kept mapped onto the canonical tokens below so the
+ * ~140 components already built in Prompts 3-4 don't need a mechanical
+ * find-and-replace pass to stay compliant — they inherit the new palette
+ * automatically. New components should prefer the canonical names directly.
+ */
+
+:root,
+[data-theme="light"] {
+  /* Canonical brand tokens */
+  --color-primary: #4F46E5;
+  --color-primary-hover: #4338CA;
+  --color-secondary: #7C3AED;
+  --color-secondary-hover: #6D28D9;
+  --color-accent: #06B6D4;
+
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  --color-info: #3B82F6;
+
+  --color-background: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-surface-secondary: #F1F5F9;
+  --color-border: #E2E8F0;
+  --color-heading: #0F172A;
+  --color-text: #475569;
+  --color-muted: #64748B;
+
+  --gradient-brand: linear-gradient(135deg, #4F46E5, #7C3AED);
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.12);
+  --radius-base: 18px;
+  --transition-base: 250ms;
+
+  /* Chart palette — use only these five, in this order, across every chart */
+  --chart-indigo: #4F46E5;
+  --chart-violet: #7C3AED;
+  --chart-cyan: #06B6D4;
+  --chart-emerald: #10B981;
+  --chart-amber: #F59E0B;
+
+  /* Legacy aliases -> canonical (kept for backward compatibility) */
+  --color-brand: var(--color-primary);
+  --color-surface-alt: var(--color-surface-secondary);
+  --color-text-muted: var(--color-muted);
+}
+
+[data-theme="dark"] {
+  --color-primary: #6366F1;
+  --color-primary-hover: #818CF8;
+  --color-secondary: #8B5CF6;
+  --color-secondary-hover: #A78BFA;
+  --color-accent: #22D3EE;
+
+  --color-success: #34D399;
+  --color-warning: #FBBF24;
+  --color-danger: #F87171;
+  --color-info: #60A5FA;
+
+  --color-background: #020617;
+  --color-surface: #0F172A;
+  --color-surface-secondary: #1E293B;
+  --color-border: #334155;
+  --color-heading: #F8FAFC;
+  --color-text: #CBD5E1;
+  --color-muted: #94A3B8;
+
+  --gradient-brand: linear-gradient(135deg, #4F46E5, #7C3AED);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+
+  --chart-indigo: #818CF8;
+  --chart-violet: #A78BFA;
+  --chart-cyan: #22D3EE;
+  --chart-emerald: #34D399;
+  --chart-amber: #FBBF24;
+
+  --color-brand: var(--color-primary);
+  --color-surface-alt: var(--color-surface-secondary);
+  --color-text-muted: var(--color-muted);
+}
+
+* {
+  transition: background-color var(--transition-base) ease, border-color var(--transition-base) ease,
+    color var(--transition-base) ease;
+}
+
+body {
+  background-color: var(--color-background);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
